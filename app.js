@@ -31,7 +31,7 @@ function renderStroke(s){
   if(!s.points?.length) return;
   ctx.lineCap='round'; ctx.lineJoin='round';
   ctx.globalCompositeOperation=s.tool==='eraser'?'destination-out':'source-over';
-  ctx.globalAlpha=s.tool==='marker'?.32:1;
+  ctx.globalAlpha=1;
   ctx.strokeStyle=s.color; ctx.fillStyle=s.color; ctx.lineWidth=s.size;
   if(s.points.length===1){const p=s.points[0];ctx.beginPath();ctx.arc(p.x,p.y,s.size/2,0,Math.PI*2);ctx.fill();}
   else{ctx.beginPath();ctx.moveTo(s.points[0].x,s.points[0].y);for(const p of s.points.slice(1))ctx.lineTo(p.x,p.y);ctx.stroke();}
